@@ -1,4 +1,4 @@
-package com.airtel.loggingaspect;
+package com.loggingaspect;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

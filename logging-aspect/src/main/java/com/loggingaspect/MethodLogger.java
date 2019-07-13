@@ -1,4 +1,4 @@
-package com.airtel.loggingaspect;
+package com.loggingaspect;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -14,7 +14,7 @@ public class MethodLogger {
 
     private static Logger logger = LoggerFactory.getLogger(MethodLogger.class);
 
-    @Around("execution(public * com.airtel.loggingaspect.Method.*(..)) && !@annotation(Loggable)")
+    @Around("execution(public * com.loggingaspect.Method.*(..)) && !@annotation(com.loggingaspect.Loggable)")
     public Object around(ProceedingJoinPoint point) throws Throwable {
         long start = System.currentTimeMillis();
         Object result = point.proceed();
@@ -33,7 +33,7 @@ public class MethodLogger {
         return result;
     }
 
-    @Pointcut("execution(public * com.airtel.loggingaspect.Data.get*())")
+    @Pointcut("execution(public * com.loggingaspect.Data.get*())")
     public void getterPointCut(){}
 
     @Before("getterPointCut()")
@@ -45,7 +45,7 @@ public class MethodLogger {
         logger.info("After getter {}",joinPoint.getSignature().getName());
     }
 
-    @Around("execution(public * com.airtel.loggingaspect.Method.*(..)) && @annotation(Loggable)")
+    @Around("execution(public * com.loggingaspect.Method.*(..)) && @annotation(com.loggingaspect.Loggable)")
     public Object annotaion(ProceedingJoinPoint point) throws Throwable {
         long start = System.currentTimeMillis();
         Object result = point.proceed();

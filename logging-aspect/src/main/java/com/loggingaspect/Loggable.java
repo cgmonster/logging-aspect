@@ -1,4 +1,4 @@
-package com.airtel.loggingaspect;
+package com.loggingaspect;
 
 
 import java.lang.annotation.Retention;
